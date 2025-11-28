@@ -1,4 +1,4 @@
-package dev.skumar.vridblog.ui.theme
+package dev.skumar.vridblog.core.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

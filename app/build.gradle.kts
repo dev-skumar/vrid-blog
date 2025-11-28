@@ -56,6 +56,12 @@ android {
 
 dependencies {
 
+    implementation(project(":core:domain"))
+    implementation(project(":core:presentation"))
+    implementation(project(":service:persistence"))
+    implementation(project(":service:networking"))
+    implementation(project(":feature:blog"))
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -65,6 +71,12 @@ dependencies {
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
+
+    implementation(project.dependencies.platform(libs.koin.bom))
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
+    implementation(libs.koin.compose)
+    implementation(libs.koin.compose.viewmodel)
 
 
     testImplementation(libs.junit)
