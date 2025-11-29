@@ -11,6 +11,6 @@ interface BlogPostRepository {
 
     suspend fun getAllBlogPosts(): List<BlogPost>
 
-    suspend fun deleteAllBlogPosts()
+    suspend fun resyncBlogPosts(newPosts: List<BlogPost>): List<BlogPost>
 
 }

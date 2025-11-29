@@ -72,10 +72,36 @@ class BlogPostRepositoryImpl(
     }
 
 
-    override suspend fun deleteAllBlogPosts() {
-        withContext(dispatcher) {
-            queries.transaction {
+    override suspend fun resyncBlogPosts(newPosts: List<BlogPost>): List<BlogPost> {
+
+        val posts = newPosts.map { mapper.mapToEntity(it) }
+
+        return withContext(dispatcher) {
+            queries.transactionWithResult {
+
                 queries.deleteAllBlogPostEntities()
+
+                posts.forEach {
+                    queries.insertBlogPostEntity(
+                        id = it.id,
+                        featureMediaUrl = it.featureMediaUrl,
+                        title = it.title,
+                        shortDescription = it.shortDescription,
+                        isShortDescriptionProtected = it.isShortDescriptionProtected,
+                        publishedOn = it.publishedOn,
+                        onlineLink = it.onlineLink,
+                        content = it.content,
+                        isContentProtected = it.isContentProtected
+                    )
+                }
+
+                queries
+                    .getAllBlogPostEntities()
+                    .executeAsList()
+                    .map {
+                        mapper.mapFromEntity(it)
+                    }
+
             }
         }
     }

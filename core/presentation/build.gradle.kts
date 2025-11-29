@@ -53,6 +53,8 @@ android {
 
 dependencies {
 
+    implementation(project(":core:domain"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -64,6 +66,7 @@ dependencies {
 
     implementation(libs.androidx.navigation3.runtime)
 
+    
     testImplementation(libs.junit)
 
 

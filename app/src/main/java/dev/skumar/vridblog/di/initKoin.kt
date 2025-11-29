@@ -1,5 +1,6 @@
 package dev.skumar.vridblog.di
 
+import dev.skumar.vridblog.feature.blog.di.blogFeatureModule
 import dev.skumar.vridblog.service.networking.di.networkingServiceModule
 import dev.skumar.vridblog.service.persistence.di.persistenceServiceModule
 import org.koin.core.context.startKoin
@@ -13,7 +14,8 @@ fun initKoin(config: KoinAppDeclaration? = null) {
             dispatchersModule,
             appLevelModule,
             networkingServiceModule,
-            persistenceServiceModule
+            persistenceServiceModule,
+            blogFeatureModule
         )
     }
 }
