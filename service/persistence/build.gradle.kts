@@ -4,6 +4,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.sqlDelight)
 }
 
 
@@ -48,13 +49,29 @@ android {
 
 dependencies {
 
+    implementation(project(":core:domain"))
+    implementation(project(":feature:blog"))
 
     implementation(project.dependencies.platform(libs.koin.bom))
     implementation(libs.koin.core)
 
+    implementation(libs.bundles.sqlDelight)
+
+
     testImplementation(libs.junit)
+
 
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
+}
+
+
+
+sqldelight {
+    databases {
+        create("VridBlogDatabase") {
+            packageName.set("dev.skumar.vridblog.service.persistence.db")
+        }
+    }
 }

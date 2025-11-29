@@ -1,0 +1,76 @@
+import kotlin.Boolean;
+
+CREATE TABLE IF NOT EXISTS
+BlogPostEntity (
+
+    id
+        INTEGER
+        PRIMARY KEY,
+
+    featureMediaUrl
+        TEXT
+        NOT NULL,
+
+    title
+        TEXT
+        NOT NULL,
+        
+    shortDescription
+        TEXT
+        NOT NULL,
+        
+    isShortDescriptionProtected
+        INTEGER AS Boolean
+        NOT NULL,
+        
+    publishedOn
+        TEXT
+        NOT NULL,
+
+    onlineLink
+        TEXT
+        NOT NULL,
+
+    content
+        TEXT
+        NOT NULL,
+
+    isContentProtected
+        INTEGER AS Boolean
+        NOT NULL
+
+);
+
+
+
+insertBlogPostEntity:
+INSERT OR REPLACE
+INTO
+    BlogPostEntity
+VALUES
+    (?, ?, ?, ?, ?, ?, ?, ?, ?);
+
+
+
+getBlogPostEntityById:
+SELECT
+    *
+FROM
+    BlogPostEntity
+WHERE
+    id = :id;
+
+
+
+getAllBlogPostEntities:
+SELECT
+    *
+FROM
+    BlogPostEntity;
+
+
+
+deleteAllBlogPostEntities:
+DELETE
+FROM
+    BlogPostEntity;
