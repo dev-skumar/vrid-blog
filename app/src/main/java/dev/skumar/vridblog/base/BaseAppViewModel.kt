@@ -8,7 +8,7 @@ import androidx.navigation3.runtime.NavKey
 import dev.skumar.vridblog.core.domain.error.ErrorController
 import dev.skumar.vridblog.core.domain.error.ErrorDialog
 import dev.skumar.vridblog.core.presentation.navigation.Screen
-import dev.skumar.vridblog.navigation.NavigationAction
+import dev.skumar.vridblog.core.presentation.navigation.NavigationAction
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 

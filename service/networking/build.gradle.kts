@@ -48,6 +48,7 @@ android {
 dependencies {
 
     implementation(project(":core:domain"))
+    implementation(project(":feature:blog"))
 
 
     implementation(project.dependencies.platform(libs.koin.bom))

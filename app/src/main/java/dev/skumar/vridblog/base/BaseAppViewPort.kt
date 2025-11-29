@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.NavKey
 import dev.skumar.vridblog.core.domain.error.ErrorDialog
 import dev.skumar.vridblog.navigation.AppNavigation
-import dev.skumar.vridblog.navigation.NavigationAction
+import dev.skumar.vridblog.core.presentation.navigation.NavigationAction
 
 
 @Composable

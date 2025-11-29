@@ -1,7 +1,6 @@
-package dev.skumar.vridblog.navigation
+package dev.skumar.vridblog.core.presentation.navigation
 
 import androidx.navigation3.runtime.NavKey
-
 
 sealed class NavigationAction {
 

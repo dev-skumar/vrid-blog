@@ -26,6 +26,7 @@ class HttpClientFactory {
                         Json {
                             prettyPrint = true
                             isLenient = true
+                            ignoreUnknownKeys = true
                         }
                     )
                 }
