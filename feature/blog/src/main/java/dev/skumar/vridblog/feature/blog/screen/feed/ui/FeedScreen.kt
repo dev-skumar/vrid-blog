@@ -58,39 +58,45 @@ fun FeedScreen(
 
         ) { innerPadding ->
 
-            when(uiState.isLoading && uiData.posts == null) {
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
+            ) {
 
-                true -> {
-                    FeedLoadingScreen()
-                }
+                when(uiState.isLoading && uiData.posts == null) {
 
-                false -> {
+                    true -> {
+                        FeedLoadingScreen()
+                    }
 
-                    val posts = uiData.posts!!
+                    false -> {
 
-                    if (posts.isEmpty()) {
+                        val posts = uiData.posts!!
 
-                        EmptyFeedsScreen(
-                            processEvent = processEvent,
-                            modifier = Modifier
-                                .padding(innerPadding)
-                        )
+                        if (posts.isEmpty()) {
 
-                    } else {
+                            EmptyFeedsScreen(
+                                processEvent = processEvent
+                            )
 
-                        LoadedFeedScreen(
-                            uiState = uiState,
-                            posts = posts,
-                            processEvent = processEvent,
-                            modifier = Modifier
-                                .padding(innerPadding)
-                        )
+                        } else {
+
+                            LoadedFeedScreen(
+                                uiState = uiState,
+                                posts = posts,
+                                processEvent = processEvent
+                            )
+
+                        }
 
                     }
 
                 }
 
             }
+
         }
     }
 }
