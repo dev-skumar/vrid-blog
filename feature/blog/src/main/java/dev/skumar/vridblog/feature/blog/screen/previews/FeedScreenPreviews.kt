@@ -44,3 +44,23 @@ fun EmptyBlogPostsFeedScreenPreview() {
 
 
 
+@PreviewTheme
+@Composable
+fun LoadedBlogPostsFeedScreenPreview() {
+    VridBlogTheme {
+        FeedScreen(
+            uiState = FeedUiState(
+                isLoading = false
+            ),
+            uiData = FeedUiData(
+                posts = testPosts
+            ),
+            performNavigation = { },
+            processEvent = { }
+        )
+    }
+}
+
+
+
+

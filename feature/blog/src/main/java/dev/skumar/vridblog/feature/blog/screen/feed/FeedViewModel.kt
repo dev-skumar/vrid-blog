@@ -78,7 +78,7 @@ class FeedViewModel(
                 }
 
                 is FeedEvent.DownloadBlogPost -> {
-                    // TODO()
+                    loadBlogPostsForPage(event.pageNumber)
                 }
 
                 FeedEvent.ResyncBlogPosts -> {
