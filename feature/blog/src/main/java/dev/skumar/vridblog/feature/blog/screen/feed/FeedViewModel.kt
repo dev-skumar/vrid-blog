@@ -72,7 +72,19 @@ class FeedViewModel(
     fun processEvent(event: FeedEvent) {
         viewModelScope.launch {
             when (event) {
-                else -> {}
+
+                is FeedEvent.ToggleTopMenuBar -> {
+                    _uiState.update { it.copy(isTopBarMenuExpanded = event.newValue) }
+                }
+
+                is FeedEvent.DownloadBlogPost -> {
+                    // TODO()
+                }
+
+                FeedEvent.ResyncBlogPosts -> {
+                    // TODO()
+                }
+
             }
         }
     }
