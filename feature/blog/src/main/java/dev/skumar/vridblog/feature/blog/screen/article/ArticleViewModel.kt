@@ -43,9 +43,15 @@ class ArticleViewModel(
     fun processEvent(event: ArticleEvent) {
         viewModelScope.launch {
             when (event) {
+
                 is ArticleEvent.LoadBlogPostById -> {
                     loadBlogPostById(event.id)
                 }
+
+                is ArticleEvent.ToggleArticleLoadingState -> {
+                    _uiState.update { it.copy(isArticleLoading = event.newValue) }
+                }
+
             }
         }
     }

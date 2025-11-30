@@ -1,5 +1,6 @@
 package dev.skumar.vridblog.navigation
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -63,6 +64,10 @@ fun AppNavigation(
                     performNavigation = performNavigation,
                     processEvent = articleVM::processEvent
                 )
+
+                BackHandler {
+                    performNavigation(NavigationAction.NavigateBackToPreviousScreen)
+                }
 
             }
 
