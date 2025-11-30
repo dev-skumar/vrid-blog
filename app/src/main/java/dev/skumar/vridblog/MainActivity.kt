@@ -12,6 +12,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import dev.skumar.vridblog.base.BaseAppViewModel
 import dev.skumar.vridblog.base.BaseAppViewPort
 import dev.skumar.vridblog.core.presentation.theme.VridBlogTheme
+import dev.skumar.vridblog.navigation.AppNavigation
 import org.koin.compose.viewmodel.koinViewModel
 
 
@@ -33,9 +34,13 @@ class MainActivity : ComponentActivity() {
                 val errorDialog by baseAppViewModel.errorDialog.collectAsStateWithLifecycle()
 
                 BaseAppViewPort(
-                    errorDialog = errorDialog,
-                    backStack = baseAppViewModel.backStack,
-                    performNavigation = baseAppViewModel::performNavigation
+                    appNavigation = {
+                        AppNavigation(
+                            backStack = baseAppViewModel.backStack,
+                            performNavigation = baseAppViewModel::performNavigation
+                        )
+                    },
+                    errorDialog = errorDialog
                 )
 
             }
