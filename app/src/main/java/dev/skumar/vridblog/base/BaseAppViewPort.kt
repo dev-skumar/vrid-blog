@@ -9,8 +9,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation3.runtime.NavKey
 import dev.skumar.vridblog.core.domain.error.ErrorDialog
-import dev.skumar.vridblog.navigation.AppNavigation
 import dev.skumar.vridblog.core.presentation.navigation.NavigationAction
+import dev.skumar.vridblog.navigation.AppNavigation
 
 
 @Composable
@@ -36,8 +36,7 @@ fun BaseAppViewPort(
 
             AppNavigation(
                 backStack = backStack,
-                performNavigation = performNavigation,
-                modifier = Modifier
+                performNavigation = performNavigation
             )
 
         }
