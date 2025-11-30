@@ -36,12 +36,12 @@ fun FeedScreenTopAppBar(
 
     CenterAlignedTopAppBar(
         colors = TopAppBarDefaults.topAppBarColors().copy(
-            containerColor = MaterialTheme.colorScheme.primaryContainer
+            containerColor = MaterialTheme.colorScheme.primary
         ),
         title = {
             Text(
                 text = "Feed",
-                color = MaterialTheme.colorScheme.onBackground,
+                color = MaterialTheme.colorScheme.background,
                 style = MaterialTheme.typography.h3,
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.SemiBold
@@ -52,6 +52,7 @@ fun FeedScreenTopAppBar(
             if (uiState.isDownloadingPosts) {
 
                 CircularProgressIndicator(
+                    color = MaterialTheme.colorScheme.background,
                     modifier = Modifier
                         .scale(0.6f)
                 )
@@ -64,7 +65,7 @@ fun FeedScreenTopAppBar(
                     Icon(
                         painter = painterResource(R.drawable.home_24px),
                         contentDescription = "Home icon",
-                        tint = MaterialTheme.colorScheme.onBackground,
+                        tint = MaterialTheme.colorScheme.background,
                         modifier = Modifier
                     )
                 }
@@ -95,7 +96,7 @@ fun FeedScreenTopAppBar(
                             Icon(
                                 painter = painterResource(R.drawable.more_vert_24px),
                                 contentDescription = "More Options",
-                                tint = MaterialTheme.colorScheme.onBackground
+                                tint = MaterialTheme.colorScheme.background
                             )
                         }
 

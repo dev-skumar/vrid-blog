@@ -30,7 +30,7 @@ fun LoadingPostsIndicator(
     ) {
 
         CircularProgressIndicator(
-            color = MaterialTheme.colorScheme.secondary,
+            color = MaterialTheme.colorScheme.primary,
             strokeWidth = 5.dp
         )
 

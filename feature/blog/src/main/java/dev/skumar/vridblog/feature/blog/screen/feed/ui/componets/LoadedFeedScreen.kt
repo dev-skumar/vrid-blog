@@ -120,6 +120,7 @@ fun LoadedFeedScreen(
                             textAlign = TextAlign.Left,
                             style = MaterialTheme.typography.l1,
                             fontWeight = FontWeight.Bold,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer,
                             modifier = Modifier
                                 .fillMaxWidth()
                         )
@@ -133,6 +134,7 @@ fun LoadedFeedScreen(
                             text = AnnotatedString.fromHtml(blogPost.shortDescription),
                             textAlign = TextAlign.Justify,
                             style = MaterialTheme.typography.bodyNormal,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer,
                             modifier = Modifier
                                 .fillMaxWidth()
                         )
@@ -148,15 +150,16 @@ fun LoadedFeedScreen(
                                 textAlign = TextAlign.Start,
                                 style = MaterialTheme.typography.bodySmall,
                                 fontWeight = FontWeight.SemiBold,
-                                fontStyle = FontStyle.Italic
+                                fontStyle = FontStyle.Italic,
+                                color = MaterialTheme.colorScheme.surface,
                             )
 
                             Button(
                                 colors = ButtonDefaults.buttonColors().copy(
                                     containerColor = MaterialTheme.colorScheme.primaryContainer,
-                                    contentColor = MaterialTheme.colorScheme.onPrimaryContainer
+                                    contentColor = MaterialTheme.colorScheme.surface
                                 ),
-                                border = BorderStroke(2.dp, color = MaterialTheme.colorScheme.onPrimaryContainer),
+                                border = BorderStroke(2.dp, color = MaterialTheme.colorScheme.surface),
                                 onClick = {
                                     performNavigation(NavigationAction.NavigateTo(Screen.Article(blogPost.id)))
                                 }

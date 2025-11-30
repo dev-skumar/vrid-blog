@@ -12,7 +12,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import dev.skumar.vridblog.core.presentation.theme.buttonText
 import dev.skumar.vridblog.core.presentation.theme.l3
@@ -60,7 +59,7 @@ fun EmptyFeedsScreen(
                     Text(
                         text = "There are no blog posts in database.\n\nClick the Download Posts button to load posts.",
                         style = MaterialTheme.typography.l3,
-                        color = Color.Gray,
+                        color = MaterialTheme.colorScheme.surface,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .fillMaxWidth()

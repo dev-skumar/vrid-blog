@@ -26,12 +26,12 @@ fun ArticleScreenTopAppBar(
 
     CenterAlignedTopAppBar(
         colors = TopAppBarDefaults.topAppBarColors().copy(
-            containerColor = MaterialTheme.colorScheme.primaryContainer
+            containerColor = MaterialTheme.colorScheme.primary
         ),
         title = {
             Text(
                 text = "Article",
-                color = MaterialTheme.colorScheme.onBackground,
+                color = MaterialTheme.colorScheme.background,
                 style = MaterialTheme.typography.h3,
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.SemiBold
@@ -47,7 +47,7 @@ fun ArticleScreenTopAppBar(
                 Icon(
                     painter = painterResource(R.drawable.arrow_back_24px),
                     contentDescription = "Home icon",
-                    tint = MaterialTheme.colorScheme.onBackground,
+                    tint = MaterialTheme.colorScheme.background,
                     modifier = Modifier
                 )
             }
