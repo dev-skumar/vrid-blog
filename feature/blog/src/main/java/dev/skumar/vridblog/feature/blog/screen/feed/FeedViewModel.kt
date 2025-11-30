@@ -82,7 +82,7 @@ class FeedViewModel(
                 }
 
                 FeedEvent.ResyncBlogPosts -> {
-                    // TODO()
+                    resyncPosts()
                 }
 
             }
@@ -174,15 +174,36 @@ class FeedViewModel(
             when(result) {
 
                 Result.Loading -> {
-                    TODO()
+                    _uiData.update { it.copy(posts = null) }
+                    _uiState.update { it.copy(isLoading = true) }
                 }
 
                 is Result.Success -> {
-                    TODO()
+                    _uiData.update { it.copy(posts = result.data) }
+                    _uiState.update { it.copy(isLoading = false) }
                 }
 
                 is Result.Error -> {
-                    TODO()
+
+                    val errorDialog = result.info.getErrorDialog(
+                        extraInfo = "",
+                        enableRetry = true,
+                        onRetry = {
+                            viewModelScope.launch {
+                                errorController.closeError()
+                                resyncPosts()
+                            }
+                        },
+                        enableOkay = true,
+                        onOkay = {
+                            viewModelScope.launch {
+                                errorController.closeError()
+                                _uiState.update { it.copy(isLoading = false) }
+                            }
+                        }
+                    )
+
+                    errorController.displayError(errorDialog)
                 }
 
             }

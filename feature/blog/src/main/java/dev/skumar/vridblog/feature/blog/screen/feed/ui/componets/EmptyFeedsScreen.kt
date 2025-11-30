@@ -17,59 +17,81 @@ import androidx.compose.ui.text.style.TextAlign
 import dev.skumar.vridblog.core.presentation.theme.buttonText
 import dev.skumar.vridblog.core.presentation.theme.l3
 import dev.skumar.vridblog.feature.blog.screen.feed.FeedEvent
+import dev.skumar.vridblog.feature.blog.screen.feed.FeedUiState
 
 
 @Composable
 fun EmptyFeedsScreen(
+    uiState: FeedUiState,
     processEvent: (FeedEvent) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center,
-        modifier = Modifier
-            .fillMaxSize()
-    ) {
+    when(uiState.isDownloadingPosts) {
 
-        Box(
-            contentAlignment = Alignment.Center,
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(0.9f)
-        ) {
-            Text(
-                text = "There are no blog posts in database.\n\nClick the Download Posts button to load posts.",
-                style = MaterialTheme.typography.l3,
-                color = Color.Gray,
-                textAlign = TextAlign.Center,
+        true -> {
+
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
                 modifier = Modifier
-                    .fillMaxWidth()
-            )
+                    .fillMaxSize()
+            ) {
+                LoadingPostsIndicator()
+            }
+
         }
 
-        Box(
-            contentAlignment = Alignment.TopCenter,
-            modifier = Modifier
-                .fillMaxWidth()
-                .weight(0.1f)
-        ) {
-            Button(
-                onClick = {
-                    processEvent(FeedEvent.DownloadBlogPost(1))
-                },
-                colors = ButtonDefaults.buttonColors().copy(
-                    containerColor = MaterialTheme.colorScheme.secondary,
-                    contentColor = MaterialTheme.colorScheme.onSecondary
-                )
+        false -> {
+
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
+                modifier = Modifier
+                    .fillMaxSize()
             ) {
-                Text(
-                    text = "Download Posts",
-                    style = MaterialTheme.typography.buttonText
-                )
+
+                Box(
+                    contentAlignment = Alignment.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(0.9f)
+                ) {
+                    Text(
+                        text = "There are no blog posts in database.\n\nClick the Download Posts button to load posts.",
+                        style = MaterialTheme.typography.l3,
+                        color = Color.Gray,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier
+                            .fillMaxWidth()
+                    )
+                }
+
+                Box(
+                    contentAlignment = Alignment.TopCenter,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .weight(0.1f)
+                ) {
+                    Button(
+                        onClick = {
+                            processEvent(FeedEvent.DownloadBlogPost(1))
+                        },
+                        colors = ButtonDefaults.buttonColors().copy(
+                            containerColor = MaterialTheme.colorScheme.secondary,
+                            contentColor = MaterialTheme.colorScheme.onSecondary
+                        )
+                    ) {
+                        Text(
+                            text = "Download Posts",
+                            style = MaterialTheme.typography.buttonText
+                        )
+                    }
+                }
+
             }
+
         }
 
     }
-
 }

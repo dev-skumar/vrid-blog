@@ -78,6 +78,7 @@ fun FeedScreen(
                         if (posts.isEmpty()) {
 
                             EmptyFeedsScreen(
+                                uiState = uiState,
                                 processEvent = processEvent
                             )
 

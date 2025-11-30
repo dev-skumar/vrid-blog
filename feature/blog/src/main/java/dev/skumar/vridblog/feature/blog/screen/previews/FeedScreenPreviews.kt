@@ -42,6 +42,24 @@ fun EmptyBlogPostsFeedScreenPreview() {
     }
 }
 
+@PreviewTheme
+@Composable
+fun DownloadingPostsOnEmptyScreenPreview() {
+    VridBlogTheme {
+        FeedScreen(
+            uiState = FeedUiState(
+                isLoading = false,
+                isDownloadingPosts = true
+            ),
+            uiData = FeedUiData(
+                posts = emptyList()
+            ),
+            performNavigation = { },
+            processEvent = { }
+        )
+    }
+}
+
 
 
 @PreviewTheme

@@ -9,6 +9,7 @@ import dev.skumar.vridblog.core.domain.utils.DeviceUtility
 import dev.skumar.vridblog.feature.blog.model.BlogPost
 import dev.skumar.vridblog.feature.blog.repository.local.BlogPostRepository
 import dev.skumar.vridblog.feature.blog.repository.remote.BlogPostApiService
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
@@ -21,6 +22,7 @@ class LoadBlogPostsForPage(
     operator fun invoke(pageNumber: Int): Flow<Result<List<BlogPost>>> = flow {
         try {
             emit(Result.Loading)
+            delay(3000) // Intended delay for debugging
 
             if (!deviceUtility.isInternetAvailable())
                 throw NetworkException.NoInternetException(ErrorMessage.NO_INTERNET)
