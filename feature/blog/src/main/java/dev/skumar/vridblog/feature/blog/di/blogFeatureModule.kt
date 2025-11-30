@@ -1,6 +1,7 @@
 package dev.skumar.vridblog.feature.blog.di
 
 import androidx.lifecycle.SavedStateHandle
+import dev.skumar.vridblog.feature.blog.screen.article.ArticleViewModel
 import dev.skumar.vridblog.feature.blog.screen.feed.FeedViewModel
 import dev.skumar.vridblog.feature.blog.usecases.BlogPostUseCases
 import dev.skumar.vridblog.feature.blog.usecases.GetAllBlogPosts
@@ -29,4 +30,9 @@ val blogFeatureModule = module {
     }
 
 
+    viewModel<ArticleViewModel> { (handle: SavedStateHandle) ->
+        ArticleViewModel(handle, get(), get())
+    }
+
+    
 }

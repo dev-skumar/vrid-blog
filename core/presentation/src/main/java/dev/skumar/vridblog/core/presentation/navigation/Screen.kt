@@ -12,7 +12,9 @@ sealed interface Screen : NavKey {
 
 
     @Serializable
-    data object Article: Screen
+    data class Article(
+        val id: Long
+    ): Screen
 
 
 }

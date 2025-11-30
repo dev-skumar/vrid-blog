@@ -11,6 +11,8 @@ import androidx.navigation3.runtime.rememberSaveableStateHolderNavEntryDecorator
 import androidx.navigation3.ui.NavDisplay
 import dev.skumar.vridblog.core.presentation.navigation.NavigationAction
 import dev.skumar.vridblog.core.presentation.navigation.Screen
+import dev.skumar.vridblog.feature.blog.screen.article.ArticleViewModel
+import dev.skumar.vridblog.feature.blog.screen.article.ui.ArticleScreen
 import dev.skumar.vridblog.feature.blog.screen.feed.FeedViewModel
 import dev.skumar.vridblog.feature.blog.screen.feed.ui.FeedScreen
 import org.koin.compose.viewmodel.koinViewModel
@@ -50,7 +52,17 @@ fun AppNavigation(
 
             entry<Screen.Article> {
 
+                val articleVM = koinViewModel<ArticleViewModel>()
+                val uiState by articleVM.uiState.collectAsStateWithLifecycle()
+                val uiData by articleVM.uiData.collectAsStateWithLifecycle()
 
+                ArticleScreen(
+                    postId = it.id,
+                    uiState = uiState,
+                    uiData = uiData,
+                    performNavigation = performNavigation,
+                    processEvent = articleVM::processEvent
+                )
 
             }
 

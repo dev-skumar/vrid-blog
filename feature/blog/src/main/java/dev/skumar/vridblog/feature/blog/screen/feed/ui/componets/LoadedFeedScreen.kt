@@ -31,6 +31,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.fromHtml
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import dev.skumar.vridblog.core.presentation.navigation.NavigationAction
+import dev.skumar.vridblog.core.presentation.navigation.Screen
 import dev.skumar.vridblog.core.presentation.theme.bodyNormal
 import dev.skumar.vridblog.core.presentation.theme.buttonText
 import dev.skumar.vridblog.core.presentation.theme.l1
@@ -45,6 +47,7 @@ fun LoadedFeedScreen(
     uiState: FeedUiState,
     posts: List<BlogPost>,
     processEvent: (FeedEvent) -> Unit,
+    performNavigation: (NavigationAction) -> Unit,
     modifier: Modifier = Modifier
 ) {
 
@@ -155,7 +158,7 @@ fun LoadedFeedScreen(
                                 ),
                                 border = BorderStroke(2.dp, color = MaterialTheme.colorScheme.onPrimaryContainer),
                                 onClick = {
-                                    // TODO(read post)
+                                    performNavigation(NavigationAction.NavigateTo(Screen.Article(blogPost.id)))
                                 }
                             ) {
                                Text(
