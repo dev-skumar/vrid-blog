@@ -1,7 +1,6 @@
 package dev.skumar.vridblog.feature.blog.screen.feed.ui.componets
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -24,7 +23,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -84,10 +82,11 @@ fun LoadedFeedScreen(
                                 .fillMaxWidth()
                                 .height(150.dp)
                                 .clip(RoundedCornerShape(10.dp))
-                                .background(Color.Gray)
                         ) {
 
-                            // TODO(load image from url)
+                            LoadImageFromUrl(
+                                url = blogPost.featuredMediaUrl
+                            )
 
                         }
 

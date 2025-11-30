@@ -20,6 +20,7 @@ koin-bom = "4.1.1"
 
 ktor = "3.3.2"
 sqlDelight = "2.2.1"
+coil = "3.3.0"
 
 
 
@@ -64,6 +65,8 @@ sqldelight-android-driver = { group = "app.cash.sqldelight", name = "android-dri
 sqldelight-coroutines-extensions-jvm = { group = "app.cash.sqldelight", name = "coroutines-extensions-jvm", version.ref = "sqlDelight" }
 sqldelight-primitive-adapters = { group = "app.cash.sqldelight", name = "primitive-adapters", version.ref = "sqlDelight" }
 
+coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
+coil-okhttp = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", version.ref = "coil" }
 
 
 [bundles]

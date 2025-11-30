@@ -68,6 +68,9 @@ dependencies {
     implementation(libs.koin.core)
     implementation(libs.koin.compose.viewmodel)
 
+    implementation(libs.coil.compose)
+    implementation(libs.coil.okhttp)
+
 
     testImplementation(libs.junit)
 
